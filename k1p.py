@@ -37,7 +37,7 @@ for entry in passwords_xml.find_all('entry'):
   if entry.password.string:
     password['password'] = '"' + entry.password.string.replace('"', '""') + '"'
   if entry.url.string:
-    password['url'] = '"' + entry.url.string + '"'
+    password['url'] = '"' + entry.url.string.replace('http://', '') + '"'
   if entry.comment.string:
     password['notes'] = '"' + entry.comment.string + '"'
 
