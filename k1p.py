@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import logging
 
 import ConfigParser
@@ -29,11 +30,16 @@ logger.info('KeePass XML file is opened')
 passwords = []
 
 for entry in passwords_xml.find_all('entry'):
-  password['title'] = entry.title.string
-  password['username'] = entry.username.string
-  password['password'] = entry.password.string
-  password['url'] = entry.url.string
-  password['notes'] = entry.comment.string
+  password = {}
+  password['title'] = '"' + entry.title.string + '"'
+  if entry.username.string:
+    password['username'] = '"' + entry.username.string + '"'
+  if entry.password.string:
+    password['password'] = '"' + entry.password.string.replace('"', '""') + '"'
+  if entry.url.string:
+    password['url'] = '"' + entry.url.string + '"'
+  if entry.comment.string:
+    password['notes'] = '"' + entry.comment.string + '"'
 
   passwords.append(password)
 
