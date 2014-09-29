@@ -19,6 +19,10 @@ Install the following dependencies:
   pick `./output/passwords.csv`.
 - Enjoy!
 
+## Documentation
+
+- [1Password 4.x CSV Documentation](https://learn2.agilebits.com/1Password4/Mac/en/KB/import.html#csv--comma-separated-values)
+
 ## License
 
 This software is released under the [MIT License](http://opensource.org/licenses/MIT).
