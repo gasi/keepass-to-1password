@@ -8,6 +8,10 @@ import argparse
 from jinja2 import Environment, PackageLoader
 from bs4 import BeautifulSoup
 
+# Helper
+def normalize(s):
+  return '"%s"' % s.replace('"', '""')
+
 # Setup logging
 script_name = os.path.splitext(os.path.basename(__file__))[0]
 logging.basicConfig()
@@ -31,16 +35,15 @@ passwords = []
 
 for entry in passwords_xml.find_all('entry'):
   password = {}
-  password['title'] = '"' + entry.title.string + '"'
+  password['title'] = normalize(entry.title.string)
   if entry.username.string:
-    password['username'] = '"' + entry.username.string + '"'
+    password['username'] = normalize(entry.username.string)
   if entry.password.string:
-    password['password'] = '"' + entry.password.string.replace('"', '""') + '"'
+    password['password'] = normalize(entry.password.string)
   if entry.url.string:
-    password['url'] = '"' + entry.url.string.replace('http://', '') + '"'
+    password['url'] = normalize(entry.url.string.replace('http://', ''))
   if entry.comment.string:
-    password['notes'] = '"' + entry.comment.string + '"'
-
+    password['notes'] = normalize(entry.comment.string)
   passwords.append(password)
 
 # Prepare output file
