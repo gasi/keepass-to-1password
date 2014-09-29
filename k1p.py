@@ -42,8 +42,10 @@ for entry in passwords_xml.find_all('entry'):
     password['password'] = normalize(entry.password.string)
   if entry.url.string:
     password['url'] = normalize(entry.url.string.replace('http://', ''))
-  if entry.comment.string:
-    password['notes'] = normalize(entry.comment.string)
+  if entry.comment.contents:
+    # Convert <br> to line breaks:
+    notes = '\n'.join(unicode(element) for element in entry.comment.contents if element.name != 'br')
+    password['notes'] = normalize(notes)
   passwords.append(password)
 
 # Prepare output file
