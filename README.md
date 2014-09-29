@@ -4,6 +4,13 @@ Migrate your KeePass(X) data to 1Password 4: Export your KeePass(X) data to XML,
 use this script to convert it to a CSV, and then import the CSV into
 1Password 4.
 
+## Prerequisites
+
+Install the following dependencies:
+
+- `pip install beautifulsoup4`
+- `pip install jinja2`
+
 ## Usage
 
 - Export your KeePassX passwords to `./input/passwords.xml`.
