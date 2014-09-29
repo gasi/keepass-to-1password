@@ -27,4 +27,5 @@ Install the following dependencies:
 
 This software is released under the [MIT License](http://opensource.org/licenses/MIT).
 
-Copyright (c) 2013 [Vincent Stark](http://vstark.net)
+- Copyright (c) 2013–2014 [Vincent Stark](http://vstark.net)
+- Copyright (c) 2014 [Daniel Gasienica](http://www.gasi.ch)
